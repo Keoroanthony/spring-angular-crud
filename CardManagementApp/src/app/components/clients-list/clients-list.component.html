@@ -1,0 +1,33 @@
+<div class="card">
+    <div class="card-body">
+      <h4>Client List</h4>
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Client Name</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr 
+          *ngFor="let client of clients; let i = index"
+                  [class.active]="i == currentIndex"
+                  (click)="setActiveClient(client, i)"
+          >
+            <th scope="row">{{ client.clientId }}</th>
+            <td>{{ client.clientName }}</td>
+            <td>
+              <a [routerLink]="['/account-list', client.clientId]" type="button" class="btn btn-info"><i class="fa-solid fa-eye"></i></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- <div class="d-none">
+        <app-account-list
+          [viewMode]="true"
+          [currentClient]="currentClient"
+        ></app-account-list>
+      </div> -->
+    </div>
+  </div>

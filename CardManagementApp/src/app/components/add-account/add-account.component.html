@@ -1,0 +1,44 @@
+<div>
+    <div class="submit-form">
+      <div *ngIf="!submitted">
+        <div class="form-group">
+          <label for="iBan">iBan</label>
+          <input
+            type="text"
+            class="form-control"
+            id="iBan"
+            required
+            [(ngModel)]="account.iBan"
+            name="iBan"
+          />
+        </div>
+        <div class="form-group">
+          <label for="bicSwift">bicSwift</label>
+          <input
+            type="text"
+            class="form-control"
+            id="bicSwift"
+            required
+            [(ngModel)]="account.bicSwift"
+            name="bicSwift"
+          />
+        </div>
+        <div class="form-group">
+            <label for="clientId">clientId</label>
+            <input
+              type="number"
+              class="form-control"
+              id="clientId"
+              required
+              [(ngModel)]="account.clientId"
+              name="clientId"
+            />
+          </div>
+        <button (click)="saveAccount()" class="btn btn-success">Submit</button>
+      </div>
+      <div *ngIf="submitted">
+        <h4>Account was submitted successfully!</h4>
+        <button class="btn btn-success" (click)="newAccount()">Add</button>
+      </div>
+    </div>
+  </div>

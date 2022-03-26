@@ -1,0 +1,35 @@
+<div class="card">
+    <div class="card-body">
+      <h4>Accounts</h4>
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">IBAN</th>
+            <th scope="col">BiCSWIFT</th>
+            <th scope="col">CLIENT ID</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr 
+          *ngFor="let account of accounts; let i = index"
+                  [class.active]="i == currentIndex"
+                  (click)="setActiveAccount(account, i)"
+          >
+            <th scope="row">{{ account.accountId }}</th>
+            <td>{{ account.iBan }}</td>
+            <td>{{ account.clientId }}</td>
+            <td>
+              <a [routerLink]="['/account-list', account.accountId]" type="button" class="btn btn-info"><i class="fa-solid fa-edit"></i></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- <div class="d-none">
+        <app-account-list
+          [viewMode]="true"
+          [currentClient]="currentClient"
+        ></app-account-list>
+      </div> -->
+    </div>
+  </div>
