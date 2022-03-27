@@ -22,7 +22,8 @@ export class ClientsListComponent implements OnInit {
    }
 
   retrieveClients(): void {
-    this.clientService.getAllClients().subscribe({
+    this.clientService.getAllClients()
+    .subscribe({
       next: (data) => {
         this.clients = data;
         console.log(data);

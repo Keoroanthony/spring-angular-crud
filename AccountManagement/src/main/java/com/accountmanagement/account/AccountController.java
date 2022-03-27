@@ -1,5 +1,6 @@
 package com.accountmanagement.account;
 
+import com.accountmanagement.card.Card;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +29,12 @@ public class AccountController {
         }
     }
 
-    @GetMapping("{accountId}")
+    @GetMapping
+    public List<Account> getAllAccounts(){
+        return accountService.getAllAccounts();
+    }
+
+    @GetMapping("/account/{accountId}")
     public ResponseEntity<?> getAccountById(@PathVariable Integer accountId){
         try {
             Account account = accountService.getAccountById(accountId);
@@ -38,10 +44,16 @@ public class AccountController {
         }
     }
 
-    @GetMapping
-    public List<Account> getAllAccounts(){
-        return accountService.getAllAccounts();
+    @GetMapping("/client-account/{clientId}")
+    public ResponseEntity<?> getAccountByClient(@PathVariable Integer clientId){
+        try {
+            List<Account> accountsByClient = accountService.getAllAccountsByClient(clientId);
+            return ResponseEntity.ok(accountsByClient);
+        } catch (IllegalStateException exception){
+            return new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_FOUND);
+        }
     }
+
 
     @PutMapping("{accountId}")
     public ResponseEntity<?> updateAccountById(@RequestBody Account updatedAccount, @PathVariable Integer accountId){

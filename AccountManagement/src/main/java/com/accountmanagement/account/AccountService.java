@@ -3,6 +3,8 @@ package com.accountmanagement.account;
 import com.accountmanagement.card.Card;
 import com.accountmanagement.card.CardRepository;
 import com.accountmanagement.card.CardService;
+import com.accountmanagement.client.Client;
+import com.accountmanagement.client.ClientRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -16,11 +18,16 @@ public class AccountService {
     private final AccountRepository accountRepository;
     private final CardService cardService;
     private final CardRepository cardRepository;
+    private final ClientRepository clientRepository;
 
-    public AccountService(AccountRepository accountRepository, CardService cardService, CardRepository cardRepository) {
+    public AccountService(AccountRepository accountRepository,
+                          CardService cardService,
+                          CardRepository cardRepository,
+                          ClientRepository clientRepository) {
         this.accountRepository = accountRepository;
         this.cardService = cardService;
         this.cardRepository = cardRepository;
+        this.clientRepository = clientRepository;
     }
 
     /* CREATE */
@@ -39,6 +46,17 @@ public class AccountService {
 
     public List<Account> getAllAccounts(){
         return accountRepository.findAll();
+    }
+
+    public List<Account> getAllAccountsByClient(Integer clientId){
+        //check if client exists
+        Optional<Client> client = clientRepository.findById(clientId);
+        if (client.isEmpty()) throw new IllegalStateException("Client with id " + clientId + " not found");
+
+        return accountRepository.findAll()
+                .stream()
+                .filter(account -> account.getClientId() == clientId)
+                .collect(Collectors.toList());
     }
 
     /* UPDATE */

@@ -1,7 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Account } from 'src/app/models/account.model';
-import { Client } from 'src/app/models/client.model';
 import { AccountsService } from 'src/app/services/accounts.service';
 
 
@@ -44,8 +43,8 @@ export class AccountListComponent implements OnInit {
     this.currentIndex = -1;
   }
 
-  setActiveAccount(client: Client, index: number): void {
-    this.currentAccount = client;
+  setActiveAccount(account: Account, index: number): void {
+    this.currentAccount = account;
     this.currentIndex = index;
   }
 

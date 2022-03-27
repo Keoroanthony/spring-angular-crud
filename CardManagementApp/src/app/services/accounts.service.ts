@@ -19,7 +19,7 @@ export class AccountsService {
 
   //get account by client id
   getAccountByClientId(clientId: number): Observable<Account> {
-    return this.http.get(`${baseUrl}/${clientId}`);
+    return this.http.get(`${baseUrl}/client-account/${clientId}`);
   }
 
   //create account
