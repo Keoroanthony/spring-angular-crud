@@ -10,7 +10,7 @@ import { AccountsService } from 'src/app/services/accounts.service';
 export class AddAccountComponent implements OnInit {
 
   account: Account = {
-    iBan: '',
+    iban: '',
     bicSwift: '',
     clientId: 0
 
@@ -25,7 +25,7 @@ export class AddAccountComponent implements OnInit {
 
   saveAccount(): void{
     const data = {
-      iBan:this.account.iBan,
+      iBan:this.account.iban,
       bicSwift:this.account.bicSwift,
       clientId:this.account.clientId
     };
@@ -41,7 +41,7 @@ export class AddAccountComponent implements OnInit {
     newAccount(): void{
       this.submitted = false;
       this.account = {
-        iBan: '',
+        iban: '',
         bicSwift: '',
         clientId: 0
     };

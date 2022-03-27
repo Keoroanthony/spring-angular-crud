@@ -12,8 +12,6 @@
         <tbody>
           <tr 
           *ngFor="let client of clients; let i = index"
-                  [class.active]="i == currentIndex"
-                  (click)="setActiveClient(client, i)"
           >
             <th scope="row">{{ client.clientId }}</th>
             <td>{{ client.clientName }}</td>

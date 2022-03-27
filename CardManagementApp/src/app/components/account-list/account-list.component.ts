@@ -30,7 +30,7 @@ export class AccountListComponent implements OnInit {
     this.accountService.getAccountByClientId(id)
       .subscribe({
         next: (data) => {
-          this.currentAccount = data;
+          this.accounts = data;
           console.log(data);
         },
         error: (e) => console.error(e)

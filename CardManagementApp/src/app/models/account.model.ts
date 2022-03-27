@@ -1,6 +1,6 @@
 export class Account {
     accountId?: number;
-    iBan?: string;
+    iban?: string;
     bicSwift?: string;
     clientId?: number;
 }

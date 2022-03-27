@@ -8,6 +8,7 @@
             <th scope="col">IBAN</th>
             <th scope="col">BiCSWIFT</th>
             <th scope="col">CLIENT ID</th>
+            <th scope="col">ACTION</th>
           </tr>
         </thead>
         <tbody>
@@ -17,7 +18,7 @@
                   (click)="setActiveAccount(account, i)"
           >
             <th scope="row">{{ account.accountId }}</th>
-            <td>{{ account.iBan }}</td>
+            <td>{{ account.iban }}</td>
             <td>{{ account.bicSwift }}</td>
             <td>{{ account.clientId }}</td>
             <td>
