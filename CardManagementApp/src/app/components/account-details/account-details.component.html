@@ -1,1 +1,99 @@
-<p>account-details works!</p>
+<!-- <div *ngIf="viewMode; else editable">
+    <div *ngIf="currentAccount.accountId">
+      <h4>Account</h4>
+      <div>
+        <label><strong>ACCOUNT ID:</strong></label> {{ currentAccount.accountId }}
+      </div>
+      <div>
+        <label><strong>IBAN:</strong></label>
+        {{ currentAccount.iban }}
+      </div>
+      <div>
+        <label><strong>BICSWIFT:</strong></label>
+        {{ currentAccount.bicSwift }}
+      </div>
+    </div>
+    <div *ngIf="!currentAccount">
+      <br />
+      <p>Please click on a Account...</p>
+    </div>
+</div>
+  <ng-template #editable>
+    <div *ngIf="currentAccount.accountId" class="edit-form">
+      <h4>Account</h4>
+      <form>
+        <div class="form-group">
+            <label for="accountId">ACCOUNT ID</label>
+            <input
+              type="number"
+              class="form-control"
+              id="accountId"
+              [(ngModel)]="currentAccount.accountId"
+              name="accountId"
+            />
+          </div>
+        <div class="form-group">
+          <label for="iban">IBAN</label>
+          <input
+            type="text"
+            class="form-control"
+            id="iban"
+            [(ngModel)]="currentAccount.iban"
+            name="iban"
+          />
+        </div>
+        <div class="form-group">
+          <label for="bicSwift">BiCSWIFT</label>
+          <input
+            type="text"
+            class="form-control"
+            id="bicSwift"
+            [(ngModel)]="currentAccount.bicSwift"
+            name="bicSwift"
+          />
+        </div>
+        <div class="form-group">
+            <label for="clientId">CLIENT ID</label>
+            <input
+              readonly
+              type="number"
+              class="form-control"
+              id="clientId"
+              [(ngModel)]="currentAccount.clientId"
+              name="clientId"
+            />
+          </div>
+      </form>
+      <button
+        type="submit"
+        class="badge badge-success mb-2"
+        (click)="updateAccount()"
+      >
+        Update
+      </button>
+      <p>{{ message }}</p>
+    </div>
+    <div *ngIf="!currentAccount.accountId">
+      <br />
+      <p>Cannot access this Account...</p>
+    </div>
+  </ng-template> -->
+
+  <form #loginForm="ngForm" (ngSubmit)="updateAccount(loginForm.value)">
+    <div class="main">
+      <div class="input-fields">
+        <input name="accountId" [(ngModel)]="currentAccount.accountId" placeholder="accountId" id="accountId" type="number" class="input-field" />
+      </div>
+      <div class="input-fields">
+        <input name="iban" [(ngModel)]="currentAccount.iban" placeholder="iban" id="iban" type="text" class="input-field" />
+      </div>
+      <div class="input-fields">
+        <input name="bicSwift" [(ngModel)]="currentAccount.bicSwift" placeholder="bicSwift" id="bicSwift" type="text" class="input-field" />
+      </div>
+      <div class="input-fields">
+        <input name="clientId" [(ngModel)]="currentAccount.clientId" placeholder="clientId" id="clientId" type="number" class="input-field" />
+      </div>
+      <button>Update Data </button>
+      <button class="btn btn-danger" title="delete account" (click)="deleteAccount()"><i class="fa-solid fa-trash-can"></i></button>
+    </div>
+  </form>

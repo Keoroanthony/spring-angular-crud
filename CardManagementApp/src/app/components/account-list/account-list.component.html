@@ -1,4 +1,5 @@
 <div class="card">
+  <!-- <a [routerLink]="['/add-account]" title="edit account" type="button" class="btn btn-info">ADD ACCOUNT</a>&nbsp; -->
     <div class="card-body">
       <h4>Accounts</h4>
       <table class="table">
@@ -22,16 +23,17 @@
             <td>{{ account.bicSwift }}</td>
             <td>{{ account.clientId }}</td>
             <td>
-              <a href="" type="button" class="btn btn-info"><i class="fa-solid fa-edit"></i></a>
+              <a [routerLink]="['/account-details', account.accountId]" title="edit account" type="button" class="btn btn-info"><i class="fa-solid fa-edit"></i></a>&nbsp;
+              <a  title="view cards under account" type="button" class="btn btn-info"><i class="fa-solid fa-address-card"></i></a>&nbsp;
             </td>
           </tr>
         </tbody>
       </table>
-      <!-- <div class="d-none">
-        <app-account-list
+      <div class="d-none">
+        <app-account-details
           [viewMode]="true"
-          [currentClient]="currentClient"
-        ></app-account-list>
-      </div> -->
+          [currentAccount]="currentAccount"
+        ></app-account-details>
+      </div>
     </div>
   </div>

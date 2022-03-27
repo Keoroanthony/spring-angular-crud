@@ -16,7 +16,7 @@
             <th scope="row">{{ client.clientId }}</th>
             <td>{{ client.clientName }}</td>
             <td>
-              <a [routerLink]="['/account-list', client.clientId]" type="button" class="btn btn-info"><i class="fa-solid fa-eye"></i></a>
+              <a [routerLink]="['/account-list', client.clientId]" title="view client accounts" type="button" class="btn btn-info"><i class="fa-solid fa-eye"></i></a>
             </td>
           </tr>
         </tbody>

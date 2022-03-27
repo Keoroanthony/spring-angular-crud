@@ -11,9 +11,9 @@ export class ClientsListComponent implements OnInit {
 
 
   clients?: Client[];
-  currentClient: Client = {};
-  currentIndex = -1;
-  clientId = 0;
+  // currentClient: Client = {};
+  // currentIndex = -1;
+  // clientId = 0;
 
  constructor(private clientService: ClientsService) { }
 
@@ -31,15 +31,15 @@ export class ClientsListComponent implements OnInit {
     });
   }
 
-  refreshList(): void {
-    this.retrieveClients();
-    this.currentClient = {};
-    this.currentIndex = -1;
-  }
+  // refreshList(): void {
+  //   this.retrieveClients();
+  //   this.currentClient = {};
+  //   this.currentIndex = -1;
+  // }
 
-  setActiveClient(client: Client, index: number): void {
-    this.currentClient = client;
-    this.currentIndex = index;
-  }
+  // setActiveClient(client: Client, index: number): void {
+  //   this.currentClient = client;
+  //   this.currentIndex = index;
+  // }
 
 }

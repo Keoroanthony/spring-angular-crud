@@ -37,8 +37,8 @@ export class AccountsService {
     return this.http.delete(`${baseUrl}/${accountId}`);
   }
 
-  getAccountByAccountId(accountId: any): Observable<Account[]> {
-    return this.http.get<Account[]>(`${baseUrl}?accountId=${accountId}`);
+  getAccountByAccountId(accountId: any): Observable<Account> {
+    return this.http.get(`${baseUrl}/${accountId}`);
   }
 
 }
