@@ -9,6 +9,9 @@ import { AddAccountComponent } from './components/add-account/add-account.compon
 import { AccountListComponent } from './components/account-list/account-list.component';
 import { AccountDetailsComponent } from './components/account-details/account-details.component';
 import { ClientsListComponent } from './components/clients-list/clients-list.component';
+import { CardListComponent } from './components/card-list/card-list.component';
+import { CardDetailsComponent } from './components/card-details/card-details.component';
+import { AddCardComponent } from './components/add-card/add-card.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { ClientsListComponent } from './components/clients-list/clients-list.com
     AddAccountComponent,
     AccountListComponent,
     AccountDetailsComponent,
-    ClientsListComponent
+    ClientsListComponent,
+    CardListComponent,
+    CardDetailsComponent,
+    AddCardComponent
   ],
   imports: [
     BrowserModule,

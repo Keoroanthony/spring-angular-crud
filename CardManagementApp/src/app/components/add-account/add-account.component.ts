@@ -25,7 +25,7 @@ export class AddAccountComponent implements OnInit {
 
   saveAccount(): void{
     const data = {
-      iBan:this.account.iban,
+      iban:this.account.iban,
       bicSwift:this.account.bicSwift,
       clientId:this.account.clientId
     };

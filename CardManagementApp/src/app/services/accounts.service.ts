@@ -12,7 +12,7 @@ export class AccountsService {
   constructor(private http: HttpClient) { }
 
 
-  //get all accounts
+  //get all accounts ok
   getAllAccounts(): Observable<Account[]> {
     return this.http.get<Account[]>(baseUrl);
   }
@@ -27,18 +27,19 @@ export class AccountsService {
     return this.http.post(baseUrl, account);
   }
 
-  //update account
+  //update account by accountId ok
   update(accountId: any, data: any): Observable<any> {
     return this.http.put(`${baseUrl}/${accountId}`, data);
   }
 
-  //delete account by id
+  //delete account by accountId ok
   delete(accountId: any): Observable<any> {
     return this.http.delete(`${baseUrl}/${accountId}`);
   }
 
+  //get account by accountId ok
   getAccountByAccountId(accountId: any): Observable<Account> {
-    return this.http.get(`${baseUrl}/${accountId}`);
+    return this.http.get(`${baseUrl}/account/${accountId}`);
   }
 
 }

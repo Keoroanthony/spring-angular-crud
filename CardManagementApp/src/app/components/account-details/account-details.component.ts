@@ -12,6 +12,7 @@ export class AccountDetailsComponent implements OnInit {
 
   @Input() viewMode = false;
   @Input() currentAccount: Account = {
+    accountId: 0,
     iban: '',
     bicSwift: '',
     clientId: 0
@@ -42,10 +43,12 @@ export class AccountDetailsComponent implements OnInit {
       });
   }
 
-  updateAccount(value: any): void {
+  updateAccount(): void {
     const data = {
+      accountId: this.currentAccount.accountId,
       iban: this.currentAccount.iban,
-      description: this.currentAccount.bicSwift
+      bicSwift: this.currentAccount.bicSwift,
+      clientId: this.currentAccount.clientId
     };
     this.message = '';
     this.accountService.update(this.currentAccount.accountId, data)
@@ -53,6 +56,7 @@ export class AccountDetailsComponent implements OnInit {
         next: (res) => {
           console.log(res);
           this.message = res.message ? res.message : 'The Account was updated successfully!';
+          // this.router.navigate(['/account-list', this.currentAccount.clientId]);
         },
         error: (e) => console.error(e)
       });
@@ -63,7 +67,7 @@ export class AccountDetailsComponent implements OnInit {
       .subscribe({
         next: (res) => {
           console.log(res);
-          this.router.navigate(['/account-list', this.currentAccount.accountId]);
+          this.router.navigate(['/account-list', this.currentAccount.clientId]);
         },
         error: (e) => console.error(e)
       });

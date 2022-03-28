@@ -1,4 +1,4 @@
-<!-- <div *ngIf="viewMode; else editable">
+<div *ngIf="viewMode; else editable">
     <div *ngIf="currentAccount.accountId">
       <h4>Account</h4>
       <div>
@@ -20,11 +20,12 @@
 </div>
   <ng-template #editable>
     <div *ngIf="currentAccount.accountId" class="edit-form">
-      <h4>Account</h4>
+      <h4 style="text-align: center;">Account</h4>
       <form>
         <div class="form-group">
             <label for="accountId">ACCOUNT ID</label>
             <input
+              readonly
               type="number"
               class="form-control"
               id="accountId"
@@ -43,7 +44,7 @@
           />
         </div>
         <div class="form-group">
-          <label for="bicSwift">BiCSWIFT</label>
+          <label for="bicSwift">BICSWIFT</label>
           <input
             type="text"
             class="form-control"
@@ -70,16 +71,20 @@
         (click)="updateAccount()"
       >
         Update
-      </button>
+      </button> &nbsp;
+      <button class="badge badge-danger mr-2" (click)="deleteAccount()">
+        Delete
+      </button>&nbsp;
+      <a [routerLink]="['/account-list', currentAccount.clientId]" title="go back to accounts" type="button" class="badge badge-inf0 mr-2">Go Back</a>
       <p>{{ message }}</p>
     </div>
     <div *ngIf="!currentAccount.accountId">
       <br />
       <p>Cannot access this Account...</p>
     </div>
-  </ng-template> -->
+  </ng-template>
 
-  <form #loginForm="ngForm" (ngSubmit)="updateAccount(loginForm.value)">
+  <!-- <form #loginForm="ngForm" (ngSubmit)="updateAccount(loginForm.value)">
     <div class="main">
       <div class="input-fields">
         <input name="accountId" [(ngModel)]="currentAccount.accountId" placeholder="accountId" id="accountId" type="number" class="input-field" />
@@ -96,4 +101,4 @@
       <button>Update Data </button>
       <button class="btn btn-danger" title="delete account" (click)="deleteAccount()"><i class="fa-solid fa-trash-can"></i></button>
     </div>
-  </form>
+  </form> -->
