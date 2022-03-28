@@ -14,6 +14,17 @@
             />
           </div>
           <div class="form-group">
+            <label for="cardType">Card Type (PHYSICAL/VIRTUAL)</label>
+            <input
+              type="text"
+              class="form-control"
+              id="cardType"
+              required
+              [(ngModel)]="card.cardType"
+              name="cardType"
+            />
+          </div>
+          <!-- <div class="form-group">
             <label for="cardAlias">Card Type</label>
             <select [(ngModel)]="card.cardType"  class="form-control">
                 <option disabled>Select Card Type </option>
@@ -24,7 +35,7 @@
                  name="cardType"
                  >{{card}}</option>
             </select>
-          </div>
+          </div> -->
           <div class="form-group">
               <label for="account">Account</label>
               <input

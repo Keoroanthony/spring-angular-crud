@@ -16,17 +16,22 @@ export class CardService {
     return this.http.get<Card[]>(`${baseUrl}/account-cards/${accountId}`);
   }
 
+  //get card by cardId ok
+  getCardByCardId(cardId: any): Observable<Card> {
+    return this.http.get(`${baseUrl}/card/${cardId}`);
+  }
+
   //create card
   create(card: any): Observable<any> {
     return this.http.post(baseUrl, card);
   }
 
-  //update account by cardId 
+  //update card by cardId 
   update(cardId: any, data: any): Observable<any> {
     return this.http.put(`${baseUrl}/${cardId}`, data);
   }
 
-  //delete account by cardId
+  //delete card by cardId
   delete(cardId: any): Observable<any> {
     return this.http.delete(`${baseUrl}/${cardId}`);
   }

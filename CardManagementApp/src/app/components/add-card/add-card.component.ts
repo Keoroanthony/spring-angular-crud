@@ -16,7 +16,7 @@ export class AddCardComponent implements OnInit {
   }
 
   submitted = false;
-  cardType: any = ['PHYSICAL', 'VIRTUAL']
+  // cardType: any = ['PHYSICAL', 'VIRTUAL']
 
   constructor(private cardService: CardService) { }
 

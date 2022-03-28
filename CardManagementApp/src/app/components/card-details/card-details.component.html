@@ -1,1 +1,75 @@
-<p>card-details works!</p>
+<div *ngIf="viewMode; else editable">
+    <div *ngIf="currentCard.cardId">
+      <h4>Card</h4>
+      <div>
+        <label><strong>CARD ID:</strong></label> {{ currentCard.cardId }}
+      </div>
+      <div>
+        <label><strong>CARD ALIAS:</strong></label>
+        {{ currentCard.cardAlias }}
+      </div>
+      <div>
+        <label><strong>CARD TYPE:</strong></label>
+        {{ currentCard.cardType }}
+      </div>
+    </div>
+    <div *ngIf="!currentCard">
+      <br />
+      <p>Please click on a Card...</p>
+    </div>
+</div>
+  <ng-template #editable>
+    <div *ngIf="currentCard.cardId" class="edit-form">
+      <h4 style="text-align: center;">Account</h4>
+      <form>
+        <div class="form-group">
+            <label for="cardId">CARD ID</label>
+            <input
+              readonly
+              type="number"
+              class="form-control"
+              id="cardId"
+              [(ngModel)]="currentCard.cardId"
+              name="cardId"
+            />
+          </div>
+        <div class="form-group">
+          <label for="cardAlias">CARD ALIAS</label>
+          <input
+            type="text"
+            class="form-control"
+            id="cardAlias"
+            [(ngModel)]="currentCard.cardAlias"
+            name="cardAlias"
+          />
+        </div>
+        <div class="form-group">
+          <label for="cardType">CARD TYPE</label>
+          <input
+            readonly
+            type="text"
+            class="form-control"
+            id="cardType"
+            [(ngModel)]="currentCard.cardType"
+            name="cardType"
+          />
+        </div>
+      </form>
+      <button
+        type="submit"
+        class="badge badge-success mb-2"
+        (click)="updateCard()"
+      >
+        Update
+      </button> &nbsp;
+      <button class="badge badge-danger mr-2" (click)="deleteCard()">
+        Delete
+      </button>&nbsp;
+      <a [routerLink]="['/card-list', currentCard.account]" title="go back to accounts" type="button" class="badge badge-inf0 mr-2">Go Back</a>
+      <p>{{ message }}</p>
+    </div>
+    <div *ngIf="!currentCard.cardId">
+      <br />
+      <p>Cannot access this Card...</p>
+    </div>
+  </ng-template>

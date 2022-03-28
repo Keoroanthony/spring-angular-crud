@@ -32,7 +32,7 @@ export class AccountDetailsComponent implements OnInit {
     }
   }
 
-  getAccount(id: string): void {
+  getAccount(id: number): void {
     this.accountService.getAccountByAccountId(id)
       .subscribe({
         next: (data) => {
