@@ -37,8 +37,8 @@ export class AddAccountComponent implements OnInit {
       error: (e) => console.error(e)
     });
 
-    }
-    newAccount(): void{
+  }
+  newAccount(): void{
       this.submitted = false;
       this.account = {
         iban: '',

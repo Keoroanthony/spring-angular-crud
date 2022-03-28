@@ -1,1 +1,37 @@
-<p>card-list works!</p>
+<div class="card">
+    <div class="card-body">
+      <a class="btn btn-primary" routerLink="/add-card" title="add card">Add Card&nbsp;<i class="fa-solid fa-address-card"></i></a>
+      <h4>Cards</h4>
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">CARD-ALIAS</th>
+            <th scope="col">CARD TYPE</th>
+            <th scope="col">ACTION</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr 
+          *ngFor="let card of cards; let i = index"
+                  [class.active]="i == currentIndex"
+                  (click)="setActiveCard(card, i)"
+          >
+            <th scope="row">{{ card.cardId }}</th>
+            <td>{{ card.cardAlias }}</td>
+            <td>{{ card.cardType }}</td>
+            <td>
+              <a [routerLink]="['/card-details', card.cardId]" title="edit card" type="button" class="btn btn-info"><i class="fa-solid fa-edit"></i></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- <div class="d-none">
+        <app-card-details
+          [viewMode]="true"
+          [currentCard]="currentCard"
+        ></app-card-details>
+      </div> -->
+    </div>
+  </div>
+

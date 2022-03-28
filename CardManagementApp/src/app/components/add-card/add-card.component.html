@@ -1,1 +1,47 @@
-<p>add-card works!</p>
+<div>
+    <h4 style="text-align: center;">Add Card</h4><br>
+    <div class="submit-form">
+        <div *ngIf="!submitted">
+          <div class="form-group">
+            <label for="cardAlias">Card Alias</label>
+            <input
+              type="text"
+              class="form-control"
+              id="cardAlias"
+              required
+              [(ngModel)]="card.cardAlias"
+              name="cardAlias"
+            />
+          </div>
+          <div class="form-group">
+            <label for="cardAlias">Card Type</label>
+            <select [(ngModel)]="card.cardType"  class="form-control">
+                <option disabled>Select Card Type </option>
+                <option
+                 *ngFor="let card of cardType" 
+                 [(ngModel)]="card.cardType" 
+                 id="cardType"
+                 name="cardType"
+                 >{{card}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+              <label for="account">Account</label>
+              <input
+                type="number"
+                class="form-control"
+                id="account"
+                required
+                [(ngModel)]="card.account"
+                name="account"
+              />
+          </div>
+          <button (click)="saveCard()" class="btn btn-success">Submit</button>
+        </div>
+        <div *ngIf="submitted">
+          <h4>Card was submitted successfully!</h4>
+          <button class="btn btn-success" (click)="newCard()">Add</button>
+        </div>
+    </div>
+</div>
+  

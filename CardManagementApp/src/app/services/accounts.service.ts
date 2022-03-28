@@ -12,10 +12,10 @@ export class AccountsService {
   constructor(private http: HttpClient) { }
 
 
-  //get all accounts ok
-  getAllAccounts(): Observable<Account[]> {
-    return this.http.get<Account[]>(baseUrl);
-  }
+  // //get all accounts ok
+  // getAllAccounts(): Observable<Account[]> {
+  //   return this.http.get<Account[]>(baseUrl);
+  // }
 
   //get account by client id
   getAccountByClientId(clientId: number): Observable<Account[]> {

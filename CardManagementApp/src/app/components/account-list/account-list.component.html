@@ -25,7 +25,7 @@
             <td>{{ account.clientId }}</td>
             <td>
               <a [routerLink]="['/account-details', account.accountId]" title="edit account" type="button" class="btn btn-info"><i class="fa-solid fa-edit"></i></a>&nbsp;
-              <a  title="view cards under account" type="button" class="btn btn-info"><i class="fa-solid fa-address-card"></i></a>&nbsp;
+              <a [routerLink]="['/card-list', account.accountId]" title="view cards under account" type="button" class="btn btn-info"><i class="fa-solid fa-address-card"></i></a>&nbsp;
             </td>
           </tr>
         </tbody>
