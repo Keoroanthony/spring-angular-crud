@@ -5,6 +5,8 @@ import com.accountmanagement.card.CardRepository;
 import com.accountmanagement.card.CardService;
 import com.accountmanagement.client.Client;
 import com.accountmanagement.client.ClientRepository;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -31,9 +33,10 @@ public class AccountService {
     }
 
     /* CREATE */
-    public void createAccount(Account account){
+    public Account createAccount(Account account){
         if (account.getClientId() == null || account.getIBan() == null || account.getBicSwift() == null) throw new IllegalStateException("Check account details");
         accountRepository.save(account);
+        return account;
     }
 
     /* READ */
@@ -50,15 +53,13 @@ public class AccountService {
 
     public List<Account> getAllAccountsByClient(Integer clientId){
         //check if client exists
-        Optional<Client> client = clientRepository.findById(clientId);
-        if (client.isEmpty()) throw new IllegalStateException("Client with id " + clientId + " not found");
+        var exists = accountRepository.existsById(clientId);
+        if (!exists) throw new IllegalStateException("Client with id " + clientId + " not found");
 
-        return accountRepository.findAll()
-                .stream()
-                .filter(account -> account.getClientId() == clientId)
-                .collect(Collectors.toList());
+        return accountRepository.findAllByClientId(clientId);
     }
 
+    
     /* UPDATE */
     public void updateAccountById(Account updatedAccount, Integer accountId){
         //Get account by id

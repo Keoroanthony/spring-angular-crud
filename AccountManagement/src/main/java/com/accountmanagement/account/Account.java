@@ -1,16 +1,16 @@
 package com.accountmanagement.account;
 
 import com.accountmanagement.card.Card;
-import com.fasterxml.jackson.annotation.JsonIncludeProperties;
+import com.accountmanagement.client.Client;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
