@@ -35,6 +35,11 @@ public class AccountService {
     /* CREATE */
     public Account createAccount(Account account){
         if (account.getClientId() == null || account.getIBan() == null || account.getBicSwift() == null) throw new IllegalStateException("Check account details");
+
+//        //Check if account being linked to the card exists
+        Optional<Client> clientExists = clientRepository.findById(account.getClientId());
+        if (clientExists.isEmpty()) throw new IllegalStateException("Client with id " + account.getClientId() + " being linked to account is not found");
+
         accountRepository.save(account);
         return account;
     }
